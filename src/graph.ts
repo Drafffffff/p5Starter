@@ -1,6 +1,6 @@
 import p5 from "p5";
 
-export class Graph {
+export default class Graph {
   private p: p5;
   private centerPoints: p5.Vector[] = [];
   private outerPoints: p5.Vector[] = [];
@@ -22,15 +22,9 @@ export class Graph {
     this.pos = postion;
     this.colorFrom = p.color("#2B33FC");
     this.colorTo = p.color("#FFFFFF");
-    for (let i = 0; i < this.outerPoints.length; i++) {
-      const x = this.p.noise(this.p.frameCount / 100 + i * 10) * 100;
-      const y = this.p.noise(this.p.frameCount / 100 + i * 10 + 100) * 300;
-      const pos = this.p.createVector(x, y);
-      this.outerOffset[i] = pos;
-    }
     this.r = p.width / 23;
     this.rO = p.width / 2.7;
-    this.xMoveRange = p.width / 1.28;
+    this.xMoveRange = p.width;
     this.outerMoveRange = p.width / 5;
     this.initCenterPoints();
     this.initOuterPoints();
@@ -38,25 +32,28 @@ export class Graph {
   }
   public update(): void {
     this.mouseOffset = this.p.createVector(
-      (this.p.mouseX - this.p.width / 2) / 5,
-      (this.p.mouseY - this.p.height / 2) / 5
+      (this.p.mouseX - this.p.width / 2) / 3,
+      (this.p.mouseY - this.p.height / 2) / 3
     );
-    console.log(this.mouseOffset);
+    // console.log(this.mouseOffset);
     this.p.noiseDetail(1.5, 0.6);
     const xxo = this.p.noise(this.p.frameCount / 100) * this.xMoveRange;
     const xyo = this.p.noise(this.p.frameCount / 100 + 100) * this.xMoveRange;
     for (let i = 0; i < this.centerPoints.length; i++) {
       const pos = this.p.createVector(
-        xxo - this.xMoveRange / 2 + this.mouseOffset.x * 0,
-        xyo - this.xMoveRange / 2 + this.mouseOffset.y * 0
+        xxo - this.xMoveRange / 2 + this.mouseOffset.x,
+        xyo - this.xMoveRange / 2 + this.mouseOffset.y
       );
       this.centerOffset[i] = pos;
     }
     this.p.noiseDetail(10, 0.2);
 
     for (let i = 0; i < this.outerPoints.length; i++) {
-      const oxo = this.p.noise(i * 100) * this.outerMoveRange;
-      const oyo = this.p.noise(100 + i * 100) * this.outerMoveRange;
+      const oxo =
+        this.p.noise(this.p.frameCount / 100 + i * 100) * this.outerMoveRange;
+      const oyo =
+        this.p.noise(this.p.frameCount / 100 + 100 + i * 100) *
+        this.outerMoveRange;
       const pos = this.p.createVector(
         oxo - this.outerMoveRange / 2,
         oyo - this.outerMoveRange / 2
@@ -70,7 +67,7 @@ export class Graph {
     this.p.push();
     this.p.translate(this.pos.x, this.pos.y);
     this.p.stroke(50);
-    this.p.strokeWeight(0.5);
+    this.p.strokeWeight(0.2);
     this.p.noFill();
     const cp = this.arrayComplate(this.centerPoints);
     const op = this.arrayComplate(this.outerPoints);

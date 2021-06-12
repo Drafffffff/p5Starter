@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "start": "parcel index.html --host 0.0.0.0",
-    "build": "parcel build index.html",
-    "deploy": "node ./deploy.js"
+    "build": "parcel build index.html --public-url ./",
+    "deploy": "yarn build & node ./deploy.js"
   },
-  "homepage": ".",
   "main": "index.js",
   "author": "drafff",
   "license": "MIT",
