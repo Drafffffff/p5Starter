@@ -1,5 +1,4 @@
 // import { Scene } from './scene';
-import "./global";
 import p5 from "p5";
 import { Graph } from "./graph";
 import poster from "./poster.png";

@@ -41,6 +41,7 @@ export class Graph {
       (this.p.mouseX - this.p.width / 2) / 5,
       (this.p.mouseY - this.p.height / 2) / 5
     );
+    console.log(this.mouseOffset);
     this.p.noiseDetail(1.5, 0.6);
     const xxo = this.p.noise(this.p.frameCount / 100) * this.xMoveRange;
     const xyo = this.p.noise(this.p.frameCount / 100 + 100) * this.xMoveRange;
