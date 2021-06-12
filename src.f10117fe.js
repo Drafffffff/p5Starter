@@ -28863,7 +28863,7 @@ var Graph = /*#__PURE__*/function () {
 
     this.r = p.width / 23;
     this.rO = p.width / 2.7;
-    this.xMoveRange = p.width / 1.28;
+    this.xMoveRange = p.width;
     this.outerMoveRange = p.width / 5;
     this.initCenterPoints();
     this.initOuterPoints(); // console.log(this.centerPoints);
@@ -28872,8 +28872,8 @@ var Graph = /*#__PURE__*/function () {
   _createClass(Graph, [{
     key: "update",
     value: function update() {
-      this.mouseOffset = this.p.createVector((this.p.mouseX - this.p.width / 2) / 5, (this.p.mouseY - this.p.height / 2) / 5);
-      console.log(this.mouseOffset);
+      this.mouseOffset = this.p.createVector((this.p.mouseX - this.p.width / 2) / 5, (this.p.mouseY - this.p.height / 2) / 5); // console.log(this.mouseOffset);
+
       this.p.noiseDetail(1.5, 0.6);
       var xxo = this.p.noise(this.p.frameCount / 100) * this.xMoveRange;
       var xyo = this.p.noise(this.p.frameCount / 100 + 100) * this.xMoveRange;
@@ -29079,7 +29079,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "0.0.0.0" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50587" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60213" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
