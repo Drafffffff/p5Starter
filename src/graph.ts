@@ -1,10 +1,10 @@
 import p5 from "p5";
-
 export default class Graph {
   private p: p5;
   private centerPoints: p5.Vector[] = [];
   private outerPoints: p5.Vector[] = [];
   private pos: p5.Vector;
+
   private r: number;
   private rO: number;
   private controlPointsNum = 15;

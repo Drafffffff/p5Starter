@@ -16,13 +16,14 @@ const sketch = (p: p5): void => {
     pos = p.createVector(p.width / 2, p.height / 2);
     graph = new Graph(p, pos);
     // mic.start();
+
     // const amp = p.constrain(mic.getLevel() * 10, 1, 10);
     // console.log(amp);
   };
-  p.windowResized = (): void => {
+
+  p.windowResized = () => {
     p.resizeCanvas(p.windowWidth, p.windowWidth * 1.5);
   };
-
   p.draw = (): void => {
     p.background(255);
     graph.update();
