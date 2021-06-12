@@ -1,5 +1,5 @@
 {
-  "name": "P5Starter",
+  "name": "p5Starter",
   "version": "1.0.0",
   "scripts": {
     "start": "parcel index.html --host 0.0.0.0",
